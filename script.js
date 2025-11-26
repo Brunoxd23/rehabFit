@@ -129,3 +129,32 @@ emailInput.addEventListener("blur", () => {
     emailInput.style.borderColor = "";
   }
 });
+
+// Accordion (mobile) behavior
+document.addEventListener("DOMContentLoaded", () => {
+  const accordion = document.getElementById("timelineAccordion");
+  if (!accordion) return;
+
+  const items = Array.from(accordion.querySelectorAll(".acc-item"));
+  const headers = accordion.querySelectorAll(".acc-header");
+
+  headers.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const item = btn.closest(".acc-item");
+      const isOpen = item.classList.contains("open");
+
+      // close all
+      items.forEach((it) => {
+        it.classList.remove("open");
+        const h = it.querySelector(".acc-header");
+        if (h) h.setAttribute("aria-expanded", "false");
+      });
+
+      // toggle current
+      if (!isOpen) {
+        item.classList.add("open");
+        btn.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+});
