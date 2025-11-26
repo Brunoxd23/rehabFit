@@ -24,9 +24,10 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 20px;
+        padding: 15px;
         position: relative;
-        overflow: hidden;
+        overflow-y: auto;
+        zoom: 0.9;
       }
 
       .login-page::before {
@@ -55,7 +56,7 @@
 
       .login-sidebar {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        padding: 3rem;
+        padding: 2.5rem;
         color: white;
         display: flex;
         flex-direction: column;
@@ -98,10 +99,11 @@
       }
 
       .login-form-section {
-        padding: 3rem;
+        padding: 2.5rem;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
+        overflow-y: auto;
       }
 
       .back-link {
