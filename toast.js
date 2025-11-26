@@ -79,6 +79,104 @@ class Toast {
   info(message, title = "", duration = 3000) {
     return this.show(message, "info", title, duration);
   }
+
+  // Confirmation dialog with toast style
+  confirm(message, title = "Confirmação", onConfirm, onCancel) {
+    const confirmToast = document.createElement("div");
+    confirmToast.className = "toast toast-confirm";
+
+    confirmToast.innerHTML = `
+      <div class="toast-icon">
+        <i data-lucide="help-circle"></i>
+      </div>
+      <div class="toast-content">
+        <div class="toast-title">${title}</div>
+        <div class="toast-message">${message}</div>
+        <div class="toast-actions">
+          <button class="toast-btn toast-btn-cancel">Cancelar</button>
+          <button class="toast-btn toast-btn-confirm">Confirmar</button>
+        </div>
+      </div>
+    `;
+
+    this.container.appendChild(confirmToast);
+
+    // Initialize Lucide icons
+    if (typeof lucide !== "undefined") {
+      lucide.createIcons();
+    }
+
+    const btnCancel = confirmToast.querySelector(".toast-btn-cancel");
+    const btnConfirm = confirmToast.querySelector(".toast-btn-confirm");
+
+    btnCancel.addEventListener("click", () => {
+      confirmToast.remove();
+      if (onCancel) onCancel();
+    });
+
+    btnConfirm.addEventListener("click", () => {
+      confirmToast.remove();
+      if (onConfirm) onConfirm();
+    });
+
+    return confirmToast;
+  }
+
+  // Prompt dialog with toast style
+  prompt(message, title = "Digite", onConfirm, placeholder = "") {
+    const promptToast = document.createElement("div");
+    promptToast.className = "toast toast-prompt";
+
+    promptToast.innerHTML = `
+      <div class="toast-icon">
+        <i data-lucide="message-square"></i>
+      </div>
+      <div class="toast-content">
+        <div class="toast-title">${title}</div>
+        <div class="toast-message">${message}</div>
+        <input type="text" class="toast-input" placeholder="${placeholder}" />
+        <div class="toast-actions">
+          <button class="toast-btn toast-btn-cancel">Cancelar</button>
+          <button class="toast-btn toast-btn-confirm">Enviar</button>
+        </div>
+      </div>
+    `;
+
+    this.container.appendChild(promptToast);
+
+    // Initialize Lucide icons
+    if (typeof lucide !== "undefined") {
+      lucide.createIcons();
+    }
+
+    const input = promptToast.querySelector(".toast-input");
+    const btnCancel = promptToast.querySelector(".toast-btn-cancel");
+    const btnConfirm = promptToast.querySelector(".toast-btn-confirm");
+
+    // Focus input
+    setTimeout(() => input.focus(), 100);
+
+    // Handle enter key
+    input.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        btnConfirm.click();
+      }
+    });
+
+    btnCancel.addEventListener("click", () => {
+      promptToast.remove();
+    });
+
+    btnConfirm.addEventListener("click", () => {
+      const value = input.value.trim();
+      promptToast.remove();
+      if (onConfirm && value) {
+        onConfirm(value);
+      }
+    });
+
+    return promptToast;
+  }
 }
 
 // Create global toast instance

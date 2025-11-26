@@ -125,6 +125,91 @@
   background: #3b82f6;
 }
 
+/* Confirmation Toast */
+.toast.toast-confirm {
+  border-left: 4px solid #6366f1;
+  color: #6366f1;
+  animation: slideInRight 0.3s ease;
+  min-width: 350px;
+}
+
+.toast.toast-confirm::before {
+  display: none;
+}
+
+.toast.toast-confirm .toast-icon {
+  background: #6366f1;
+}
+
+.toast-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.toast-btn {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  font-family: inherit;
+}
+
+.toast-btn-cancel {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.toast-btn-cancel:hover {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.toast-btn-confirm {
+  background: #6366f1;
+  color: white;
+}
+
+.toast-btn-confirm:hover {
+  background: #4f46e5;
+}
+
+/* Prompt Toast */
+.toast.toast-prompt {
+  border-left: 4px solid #8b5cf6;
+  color: #8b5cf6;
+  animation: slideInRight 0.3s ease;
+  min-width: 350px;
+}
+
+.toast.toast-prompt::before {
+  display: none;
+}
+
+.toast.toast-prompt .toast-icon {
+  background: #8b5cf6;
+}
+
+.toast-input {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-family: inherit;
+  margin-top: 0.75rem;
+  transition: border-color 0.2s ease;
+}
+
+.toast-input:focus {
+  outline: none;
+  border-color: #8b5cf6;
+}
+
 /* Animations */
 @keyframes slideInRight {
   from {

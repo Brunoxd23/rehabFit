@@ -231,15 +231,21 @@ cadastroForm.addEventListener("submit", (e) => {
 const forgotPasswordLink = document.getElementById("forgotPasswordLink");
 forgotPasswordLink.addEventListener("click", (e) => {
   e.preventDefault();
-  const email = prompt("Digite seu e-mail para recuperar a senha:");
-  if (email && validateEmail(email)) {
-    toast.success(
-      `Um link de recuperação foi enviado para ${email}`,
-      "E-mail enviado"
-    );
-  } else if (email) {
-    toast.error("E-mail inválido. Tente novamente.", "Erro de validação");
-  }
+  toast.prompt(
+    "Digite seu e-mail para receber o link de recuperação:",
+    "Recuperar Senha",
+    (email) => {
+      if (validateEmail(email)) {
+        toast.success(
+          `Um link de recuperação foi enviado para ${email}`,
+          "E-mail enviado"
+        );
+      } else {
+        toast.error("E-mail inválido. Tente novamente.", "Erro de validação");
+      }
+    },
+    "seu@email.com"
+  );
 });
 
 // Social login/signup

@@ -51,14 +51,17 @@ navItems.forEach((item) => {
     // Check for logout link
     if (item.textContent.includes("Sair")) {
       e.preventDefault();
-      const confirmLogout = confirm("Deseja realmente sair?");
-      if (confirmLogout) {
-        localStorage.removeItem("currentUser");
-        toast.success("Até logo!", "Logout");
-        setTimeout(() => {
-          window.location.href = "login.html";
-        }, 800);
-      }
+      toast.confirm(
+        "Você tem certeza que deseja sair da sua conta?",
+        "Confirmar Logout",
+        () => {
+          localStorage.removeItem("currentUser");
+          toast.success("Até logo!", "Logout");
+          setTimeout(() => {
+            window.location.href = "login.html";
+          }, 800);
+        }
+      );
       return;
     }
 
@@ -182,17 +185,14 @@ document.querySelectorAll(".quick-actions .btn").forEach((btn) => {
 // User menu dropdown (placeholder)
 const userBtn = document.getElementById("userBtn");
 userBtn?.addEventListener("click", () => {
-  const options = ["Meu Perfil", "Configurações", "Ajuda", "Sair"];
-
-  const choice = confirm("Deseja sair da sua conta?");
-  if (choice) {
+  toast.confirm("Você deseja sair da sua conta?", "Logout", () => {
     // Logout
     localStorage.removeItem("currentUser");
     toast.success("Até breve!", "Logout realizado");
     setTimeout(() => {
       window.location.href = "login.html";
     }, 800);
-  }
+  });
 });
 
 // Notification button
