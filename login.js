@@ -16,6 +16,30 @@ tabs.forEach((tab) => {
   });
 });
 
+// Contas de teste (temporário - será substituído por banco de dados)
+const testUsers = [
+  {
+    email: "admin@rehabfit.com",
+    password: "admin123",
+    nome: "Administrador",
+  },
+  {
+    email: "joao@email.com",
+    password: "123456",
+    nome: "João Silva",
+  },
+  {
+    email: "maria@email.com",
+    password: "123456",
+    nome: "Maria Costa",
+  },
+  {
+    email: "teste@teste.com",
+    password: "teste",
+    nome: "Usuário Teste",
+  },
+];
+
 // Email validation
 function validateEmail(email) {
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -54,20 +78,38 @@ loginForm.addEventListener("submit", (e) => {
     return;
   }
 
-  // Simulate login
-  console.log("Login:", { email, password });
-  
+  // Verificar credenciais
+  const user = testUsers.find(
+    (u) => u.email === email && u.password === password
+  );
+
+  if (!user) {
+    alert(
+      "E-mail ou senha incorretos!\n\nContas de teste disponíveis:\n• admin@rehabfit.com / admin123\n• joao@email.com / 123456\n• maria@email.com / 123456\n• teste@teste.com / teste"
+    );
+    return;
+  }
+
   // Show loading state
   const submitBtn = loginForm.querySelector('button[type="submit"]');
   const originalText = submitBtn.innerHTML;
-  submitBtn.innerHTML = 'Entrando...';
+  submitBtn.innerHTML = "Entrando...";
   submitBtn.disabled = true;
+
+  // Salvar usuário no localStorage (temporário)
+  localStorage.setItem(
+    "currentUser",
+    JSON.stringify({
+      email: user.email,
+      nome: user.nome,
+    })
+  );
 
   // Simulate API call
   setTimeout(() => {
-    alert("Login realizado com sucesso!");
-    window.location.href = 'dashboard.html';
-  }, 1000);
+    alert(`Bem-vindo, ${user.nome}!`);
+    window.location.href = "dashboard.html";
+  }, 800);
 });
 
 // Cadastro Form
@@ -147,20 +189,34 @@ cadastroForm.addEventListener("submit", (e) => {
 
   if (hasError) return;
 
+  // Verificar se e-mail já existe
+  const emailExists = testUsers.some((u) => u.email === email);
+
+  if (emailExists) {
+    alert("Este e-mail já está cadastrado! Use o login ou outro e-mail.");
+    return;
+  }
+
   // Simulate signup
   console.log("Cadastro:", { nome, email, password });
-  
+
   // Show loading state
   const submitBtn = cadastroForm.querySelector('button[type="submit"]');
   const originalText = submitBtn.innerHTML;
-  submitBtn.innerHTML = 'Criando conta...';
+  submitBtn.innerHTML = "Criando conta...";
   submitBtn.disabled = true;
+
+  // Adicionar novo usuário (temporário - em produção será no banco)
+  testUsers.push({ email, password, nome });
+
+  // Salvar no localStorage
+  localStorage.setItem("currentUser", JSON.stringify({ email, nome }));
 
   // Simulate API call
   setTimeout(() => {
-    alert("Cadastro realizado com sucesso!");
-    window.location.href = 'dashboard.html';
-  }, 1000);
+    alert(`Conta criada com sucesso, ${nome}!`);
+    window.location.href = "dashboard.html";
+  }, 800);
 });
 
 // Forgot password
