@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="RehabFit - Login para acessar seu programa personalizado de exercícios"
+    />
+    <title>Login - RehabFit</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      .login-page {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .login-page::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>');
+        opacity: 0.3;
+      }
+
+      .login-container {
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+        max-width: 1000px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        position: relative;
+        z-index: 1;
+      }
+
+      .login-sidebar {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 3rem;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .login-sidebar .logo {
+        margin-bottom: 2rem;
+      }
+
+      .login-sidebar h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        line-height: 1.3;
+      }
+
+      .login-sidebar p {
+        opacity: 0.95;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+      }
+
+      .login-features {
+        list-style: none;
+        margin-top: 2rem;
+      }
+
+      .login-features li {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+      }
+
+      .login-features i {
+        width: 20px;
+        height: 20px;
+        color: #fbbf24;
+      }
+
+      .login-form-section {
+        padding: 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-light);
+        text-decoration: none;
+        font-size: 0.9rem;
+        margin-bottom: 2rem;
+        transition: var(--transition);
+      }
+
+      .back-link:hover {
+        color: var(--primary-color);
+      }
+
+      .back-link i {
+        width: 18px;
+        height: 18px;
+      }
+
+      .login-form-section h1 {
+        color: var(--text-dark);
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .login-form-section > p {
+        color: var(--text-light);
+        margin-bottom: 2rem;
+      }
+
+      .form-tabs {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        border-bottom: 2px solid var(--border-color);
+      }
+
+      .form-tab {
+        padding: 0.75rem 1.5rem;
+        background: none;
+        border: none;
+        color: var(--text-light);
+        font-weight: 600;
+        cursor: pointer;
+        position: relative;
+        transition: var(--transition);
+      }
+
+      .form-tab.active {
+        color: var(--primary-color);
+      }
+
+      .form-tab.active::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--primary-color);
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      .login-form .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .login-form label {
+        display: block;
+        color: var(--text-dark);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .login-form input {
+        width: 100%;
+        padding: 0.875rem 1rem;
+        border: 2px solid var(--border-color);
+        border-radius: 8px;
+        font-size: 1rem;
+        font-family: inherit;
+        transition: var(--transition);
+      }
+
+      .login-form input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+      }
+
+      .login-form input.error {
+        border-color: #ef4444;
+      }
+
+      .error-message {
+        color: #ef4444;
+        font-size: 0.85rem;
+        margin-top: 0.25rem;
+        display: none;
+      }
+
+      .error-message.show {
+        display: block;
+      }
+
+      .forgot-password {
+        text-align: right;
+        margin-top: 0.5rem;
+      }
+
+      .forgot-password a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      .forgot-password a:hover {
+        text-decoration: underline;
+      }
+
+      .login-form .btn {
+        margin-top: 1rem;
+      }
+
+      .divider {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        margin: 1.5rem 0;
+        color: var(--text-light);
+        font-size: 0.9rem;
+      }
+
+      .divider::before,
+      .divider::after {
+        content: "";
+        flex: 1;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .divider span {
+        padding: 0 1rem;
+      }
+
+      .social-login {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .social-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        padding: 0.875rem 1rem;
+        border: 2px solid var(--border-color);
+        border-radius: 8px;
+        background: white;
+        color: var(--text-dark);
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        text-decoration: none;
+      }
+
+      .social-btn:hover {
+        background: var(--bg-light);
+        border-color: var(--text-light);
+      }
+
+      .social-btn i {
+        width: 20px;
+        height: 20px;
+      }
+
+      @media (max-width: 968px) {
+        .login-container {
+          grid-template-columns: 1fr;
+        }
+
+        .login-sidebar {
+          display: none;
+        }
+
+        .login-form-section {
+          padding: 2rem 1.5rem;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .login-form-section h1 {
+          font-size: 1.5rem;
+        }
+
+        .form-tabs {
+          gap: 0.5rem;
+        }
+
+        .form-tab {
+          padding: 0.75rem 1rem;
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-page">
+      <div class="login-container">
+        <!-- Sidebar -->
+        <div class="login-sidebar">
+          <div class="logo">
+            <i data-lucide="heart-pulse" class="logo-icon"></i>
+            <span class="logo-text">RehabFit</span>
+          </div>
+          <h2>Bem-vindo de volta!</h2>
+          <p>
+            Continue sua jornada de recuperação e bem-estar. Acesse seu programa
+            personalizado e acompanhe seu progresso.
+          </p>
+          <ul class="login-features">
+            <li>
+              <i data-lucide="check-circle"></i>
+              <span>Exercícios personalizados</span>
+            </li>
+            <li>
+              <i data-lucide="check-circle"></i>
+              <span>Acompanhamento profissional</span>
+            </li>
+            <li>
+              <i data-lucide="check-circle"></i>
+              <span>Progresso em tempo real</span>
+            </li>
+            <li>
+              <i data-lucide="check-circle"></i>
+              <span>Suporte 24/7</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Form Section -->
+        <div class="login-form-section">
+          <a href="index.html" class="back-link">
+            <i data-lucide="arrow-left"></i>
+            Voltar para página inicial
+          </a>
+
+          <h1>Acesse sua conta</h1>
+          <p>Entre ou crie sua conta para começar</p>
+
+          <!-- Tabs -->
+          <div class="form-tabs">
+            <button class="form-tab active" data-tab="login">Login</button>
+            <button class="form-tab" data-tab="cadastro">Cadastro</button>
+          </div>
+
+          <!-- Login Form -->
+          <div class="tab-content active" id="login">
+            <form class="login-form" id="loginForm">
+              <div class="form-group">
+                <label for="loginEmail">E-mail</label>
+                <input
+                  type="email"
+                  id="loginEmail"
+                  name="email"
+                  placeholder="seu@email.com"
+                  required
+                />
+                <span class="error-message" id="loginEmailError"
+                  >E-mail inválido</span
+                >
+              </div>
+              <div class="form-group">
+                <label for="loginPassword">Senha</label>
+                <input
+                  type="password"
+                  id="loginPassword"
+                  name="password"
+                  placeholder="••••••••"
+                  required
+                />
+                <div class="forgot-password">
+                  <a href="#" id="forgotPasswordLink">Esqueceu a senha?</a>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg btn-block">
+                Entrar
+              </button>
+            </form>
+
+            <div class="divider">
+              <span>ou continue com</span>
+            </div>
+
+            <div class="social-login">
+              <button class="social-btn" id="googleLogin">
+                <i data-lucide="chrome"></i>
+                <span>Google</span>
+              </button>
+              <button class="social-btn" id="appleLogin">
+                <i data-lucide="apple"></i>
+                <span>Apple</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Cadastro Form -->
+          <div class="tab-content" id="cadastro">
+            <form class="login-form" id="cadastroForm">
+              <div class="form-group">
+                <label for="cadastroNome">Nome completo</label>
+                <input
+                  type="text"
+                  id="cadastroNome"
+                  name="nome"
+                  placeholder="Seu nome completo"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="cadastroEmail">E-mail</label>
+                <input
+                  type="email"
+                  id="cadastroEmail"
+                  name="email"
+                  placeholder="seu@email.com"
+                  required
+                />
+                <span class="error-message" id="cadastroEmailError"
+                  >E-mail inválido</span
+                >
+              </div>
+              <div class="form-group">
+                <label for="cadastroPassword">Senha</label>
+                <input
+                  type="password"
+                  id="cadastroPassword"
+                  name="password"
+                  placeholder="Mínimo 8 caracteres"
+                  required
+                />
+                <span class="error-message" id="cadastroPasswordError"
+                  >Senha deve ter no mínimo 8 caracteres</span
+                >
+              </div>
+              <div class="form-group">
+                <label for="cadastroPasswordConfirm">Confirmar senha</label>
+                <input
+                  type="password"
+                  id="cadastroPasswordConfirm"
+                  name="passwordConfirm"
+                  placeholder="Digite a senha novamente"
+                  required
+                />
+                <span class="error-message" id="cadastroPasswordConfirmError"
+                  >As senhas não coincidem</span
+                >
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg btn-block">
+                Criar conta
+              </button>
+            </form>
+
+            <div class="divider">
+              <span>ou cadastre-se com</span>
+            </div>
+
+            <div class="social-login">
+              <button class="social-btn" id="googleSignup">
+                <i data-lucide="chrome"></i>
+                <span>Google</span>
+              </button>
+              <button class="social-btn" id="appleSignup">
+                <i data-lucide="apple"></i>
+                <span>Apple</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Initialize Lucide icons
+      lucide.createIcons();
+    </script>
+    <script src="login.js"></script>
+  </body>
+</html>
