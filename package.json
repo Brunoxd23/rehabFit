@@ -1,0 +1,22 @@
+{
+  "name": "rehabfit",
+  "version": "1.0.0",
+  "description": "Landing page para programa de exercícios para pacientes oncológicos",
+  "main": "index.html",
+  "scripts": {
+    "dev": "python -m http.server 5500",
+    "preview": "python -m http.server 8080"
+  },
+  "keywords": [
+    "saúde",
+    "oncologia",
+    "exercícios",
+    "reabilitação"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seu-usuario/rehabfit.git"
+  }
+}
