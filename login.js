@@ -56,12 +56,18 @@ loginForm.addEventListener("submit", (e) => {
 
   // Simulate login
   console.log("Login:", { email, password });
-  alert(
-    "Login realizado com sucesso! Em breve você será redirecionado para o app."
-  );
+  
+  // Show loading state
+  const submitBtn = loginForm.querySelector('button[type="submit"]');
+  const originalText = submitBtn.innerHTML;
+  submitBtn.innerHTML = 'Entrando...';
+  submitBtn.disabled = true;
 
-  // TODO: In real app, make API call and redirect to dashboard
-  // window.location.href = 'dashboard.html';
+  // Simulate API call
+  setTimeout(() => {
+    alert("Login realizado com sucesso!");
+    window.location.href = 'dashboard.html';
+  }, 1000);
 });
 
 // Cadastro Form
@@ -143,12 +149,18 @@ cadastroForm.addEventListener("submit", (e) => {
 
   // Simulate signup
   console.log("Cadastro:", { nome, email, password });
-  alert(
-    "Cadastro realizado com sucesso! Em breve você será redirecionado para o app."
-  );
+  
+  // Show loading state
+  const submitBtn = cadastroForm.querySelector('button[type="submit"]');
+  const originalText = submitBtn.innerHTML;
+  submitBtn.innerHTML = 'Criando conta...';
+  submitBtn.disabled = true;
 
-  // TODO: In real app, make API call and redirect to onboarding or dashboard
-  // window.location.href = 'onboarding.html';
+  // Simulate API call
+  setTimeout(() => {
+    alert("Cadastro realizado com sucesso!");
+    window.location.href = 'dashboard.html';
+  }, 1000);
 });
 
 // Forgot password

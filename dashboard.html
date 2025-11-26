@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="RehabFit - Dashboard do Paciente" />
+    <title>Dashboard - RehabFit</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body class="dashboard-body">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <i data-lucide="heart-pulse" class="logo-icon"></i>
+          <span class="logo-text">RehabFit</span>
+        </div>
+        <button class="sidebar-toggle" id="sidebarToggle">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#dashboard" class="nav-item active">
+          <i data-lucide="layout-dashboard"></i>
+          <span>Dashboard</span>
+        </a>
+        <a href="#exercicios" class="nav-item">
+          <i data-lucide="dumbbell"></i>
+          <span>Exercícios</span>
+        </a>
+        <a href="#progresso" class="nav-item">
+          <i data-lucide="trending-up"></i>
+          <span>Progresso</span>
+        </a>
+        <a href="#comunidade" class="nav-item">
+          <i data-lucide="users"></i>
+          <span>Comunidade</span>
+        </a>
+        <a href="#recursos" class="nav-item">
+          <i data-lucide="book-open"></i>
+          <span>Recursos</span>
+        </a>
+        <a href="#notificacoes" class="nav-item">
+          <i data-lucide="bell"></i>
+          <span>Notificações</span>
+          <span class="badge">3</span>
+        </a>
+        <a href="#dispositivos" class="nav-item">
+          <i data-lucide="watch"></i>
+          <span>Dispositivos</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="#configuracoes" class="nav-item">
+          <i data-lucide="settings"></i>
+          <span>Configurações</span>
+        </a>
+        <a href="index.html" class="nav-item">
+          <i data-lucide="log-out"></i>
+          <span>Sair</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Header -->
+      <header class="dashboard-header">
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <i data-lucide="menu"></i>
+        </button>
+        <div class="header-search">
+          <i data-lucide="search"></i>
+          <input type="text" placeholder="Buscar exercícios, artigos..." />
+        </div>
+        <div class="header-actions">
+          <button class="icon-btn" id="notificationBtn">
+            <i data-lucide="bell"></i>
+            <span class="notification-dot"></span>
+          </button>
+          <div class="user-menu">
+            <button class="user-btn" id="userBtn">
+              <div class="user-avatar">JD</div>
+              <div class="user-info">
+                <span class="user-name">João Silva</span>
+                <span class="user-role">Paciente</span>
+              </div>
+              <i data-lucide="chevron-down"></i>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Content -->
+      <main class="dashboard-main">
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+          <div class="welcome-text">
+            <h1>Bem-vindo de volta, João! 👋</h1>
+            <p>Continue sua jornada de recuperação com exercícios personalizados</p>
+          </div>
+          <div class="quick-actions">
+            <button class="btn btn-primary">
+              <i data-lucide="play-circle"></i>
+              Iniciar Treino
+            </button>
+            <button class="btn btn-secondary">
+              <i data-lucide="calendar"></i>
+              Ver Agenda
+            </button>
+          </div>
+        </section>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon primary">
+              <i data-lucide="activity"></i>
+            </div>
+            <div class="stat-info">
+              <span class="stat-label">Exercícios Hoje</span>
+              <span class="stat-value">3/5</span>
+              <span class="stat-change positive">+2 desde ontem</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon success">
+              <i data-lucide="flame"></i>
+            </div>
+            <div class="stat-info">
+              <span class="stat-label">Sequência</span>
+              <span class="stat-value">7 dias</span>
+              <span class="stat-change positive">Melhor: 12 dias</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon warning">
+              <i data-lucide="clock"></i>
+            </div>
+            <div class="stat-info">
+              <span class="stat-label">Tempo Ativo</span>
+              <span class="stat-value">45 min</span>
+              <span class="stat-change">Meta: 60 min</span>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon info">
+              <i data-lucide="trophy"></i>
+            </div>
+            <div class="stat-info">
+              <span class="stat-label">Conquistas</span>
+              <span class="stat-value">12</span>
+              <span class="stat-change positive">+2 esta semana</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Two Column Layout -->
+        <div class="content-grid">
+          <!-- Próximos Exercícios -->
+          <div class="card">
+            <div class="card-header">
+              <h2>
+                <i data-lucide="calendar-check"></i>
+                Próximos Exercícios
+              </h2>
+              <a href="#exercicios" class="link">Ver todos</a>
+            </div>
+            <div class="exercise-list">
+              <div class="exercise-item">
+                <div class="exercise-time">
+                  <span class="time">10:00</span>
+                  <span class="duration">20 min</span>
+                </div>
+                <div class="exercise-info">
+                  <h3>Alongamento Matinal</h3>
+                  <p>Exercícios de baixa intensidade</p>
+                  <div class="exercise-tags">
+                    <span class="tag">Pós-operatório</span>
+                    <span class="tag">Iniciante</span>
+                  </div>
+                </div>
+                <button class="btn-icon">
+                  <i data-lucide="play-circle"></i>
+                </button>
+              </div>
+
+              <div class="exercise-item">
+                <div class="exercise-time">
+                  <span class="time">14:00</span>
+                  <span class="duration">30 min</span>
+                </div>
+                <div class="exercise-info">
+                  <h3>Caminhada Leve</h3>
+                  <p>Exercício cardiovascular</p>
+                  <div class="exercise-tags">
+                    <span class="tag">Intermediário</span>
+                  </div>
+                </div>
+                <button class="btn-icon">
+                  <i data-lucide="play-circle"></i>
+                </button>
+              </div>
+
+              <div class="exercise-item">
+                <div class="exercise-time">
+                  <span class="time">18:00</span>
+                  <span class="duration">15 min</span>
+                </div>
+                <div class="exercise-info">
+                  <h3>Respiração e Relaxamento</h3>
+                  <p>Técnicas de respiração</p>
+                  <div class="exercise-tags">
+                    <span class="tag">Todos os níveis</span>
+                  </div>
+                </div>
+                <button class="btn-icon">
+                  <i data-lucide="play-circle"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Progresso Semanal -->
+          <div class="card">
+            <div class="card-header">
+              <h2>
+                <i data-lucide="bar-chart-3"></i>
+                Progresso Semanal
+              </h2>
+              <select class="select-small">
+                <option>Esta semana</option>
+                <option>Últimos 7 dias</option>
+                <option>Este mês</option>
+              </select>
+            </div>
+            <div class="progress-chart">
+              <div class="chart-bars">
+                <div class="bar-item">
+                  <div class="bar" style="height: 60%">
+                    <span class="bar-value">3</span>
+                  </div>
+                  <span class="bar-label">Seg</span>
+                </div>
+                <div class="bar-item">
+                  <div class="bar" style="height: 80%">
+                    <span class="bar-value">4</span>
+                  </div>
+                  <span class="bar-label">Ter</span>
+                </div>
+                <div class="bar-item">
+                  <div class="bar" style="height: 100%">
+                    <span class="bar-value">5</span>
+                  </div>
+                  <span class="bar-label">Qua</span>
+                </div>
+                <div class="bar-item">
+                  <div class="bar" style="height: 90%">
+                    <span class="bar-value">4</span>
+                  </div>
+                  <span class="bar-label">Qui</span>
+                </div>
+                <div class="bar-item">
+                  <div class="bar" style="height: 70%">
+                    <span class="bar-value">3</span>
+                  </div>
+                  <span class="bar-label">Sex</span>
+                </div>
+                <div class="bar-item">
+                  <div class="bar active" style="height: 40%">
+                    <span class="bar-value">2</span>
+                  </div>
+                  <span class="bar-label">Sáb</span>
+                </div>
+                <div class="bar-item">
+                  <div class="bar future" style="height: 0%">
+                    <span class="bar-value">0</span>
+                  </div>
+                  <span class="bar-label">Dom</span>
+                </div>
+              </div>
+            </div>
+            <div class="progress-summary">
+              <div class="summary-item">
+                <i data-lucide="check-circle"></i>
+                <span>21 exercícios completados</span>
+              </div>
+              <div class="summary-item">
+                <i data-lucide="target"></i>
+                <span>Meta: 25 exercícios</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comunidade e Recursos -->
+        <div class="content-grid">
+          <!-- Comunidade -->
+          <div class="card">
+            <div class="card-header">
+              <h2>
+                <i data-lucide="message-circle"></i>
+                Atividade da Comunidade
+              </h2>
+              <a href="#comunidade" class="link">Ver fórum</a>
+            </div>
+            <div class="community-posts">
+              <div class="post-item">
+                <div class="post-avatar">M</div>
+                <div class="post-content">
+                  <div class="post-header">
+                    <strong>Maria Costa</strong>
+                    <span class="post-time">2h atrás</span>
+                  </div>
+                  <p>Completei minha primeira semana de exercícios! 💪</p>
+                  <div class="post-actions">
+                    <button class="post-action">
+                      <i data-lucide="heart"></i>
+                      12
+                    </button>
+                    <button class="post-action">
+                      <i data-lucide="message-square"></i>
+                      3
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="post-item">
+                <div class="post-avatar">P</div>
+                <div class="post-content">
+                  <div class="post-header">
+                    <strong>Paulo Santos</strong>
+                    <span class="post-time">5h atrás</span>
+                  </div>
+                  <p>Alguém tem dicas para exercícios pós-quimioterapia?</p>
+                  <div class="post-actions">
+                    <button class="post-action">
+                      <i data-lucide="heart"></i>
+                      8
+                    </button>
+                    <button class="post-action">
+                      <i data-lucide="message-square"></i>
+                      15
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Artigos Recentes -->
+          <div class="card">
+            <div class="card-header">
+              <h2>
+                <i data-lucide="book-open"></i>
+                Artigos Recomendados
+              </h2>
+              <a href="#recursos" class="link">Ver mais</a>
+            </div>
+            <div class="articles-list">
+              <article class="article-item">
+                <div class="article-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=200&fit=crop"
+                    alt="Benefícios do exercício"
+                  />
+                </div>
+                <div class="article-content">
+                  <h3>Benefícios do Exercício Durante o Tratamento</h3>
+                  <p>Como a atividade física pode ajudar na recuperação...</p>
+                  <div class="article-meta">
+                    <span class="reading-time">
+                      <i data-lucide="clock"></i>
+                      5 min
+                    </span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="article-item">
+                <div class="article-image">
+                  <img
+                    src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=200&fit=crop"
+                    alt="Nutrição"
+                  />
+                </div>
+                <div class="article-content">
+                  <h3>Nutrição e Recuperação Oncológica</h3>
+                  <p>Dicas de alimentação para fortalecer seu corpo...</p>
+                  <div class="article-meta">
+                    <span class="reading-time">
+                      <i data-lucide="clock"></i>
+                      7 min
+                    </span>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      // Initialize Lucide icons
+      lucide.createIcons();
+    </script>
+    <script src="dashboard.js"></script>
+  </body>
+</html>
