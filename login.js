@@ -84,8 +84,9 @@ loginForm.addEventListener("submit", (e) => {
   );
 
   if (!user) {
-    alert(
-      "E-mail ou senha incorretos!\n\nContas de teste disponíveis:\n• admin@rehabfit.com / admin123\n• joao@email.com / 123456\n• maria@email.com / 123456\n• teste@teste.com / teste"
+    toast.error(
+      "E-mail ou senha incorretos!<br><br><strong>Contas de teste:</strong><br>• admin@rehabfit.com / admin123<br>• joao@email.com / 123456<br>• maria@email.com / 123456<br>• teste@teste.com / teste",
+      "Credenciais inválidas"
     );
     return;
   }
@@ -107,8 +108,10 @@ loginForm.addEventListener("submit", (e) => {
 
   // Simulate API call
   setTimeout(() => {
-    alert(`Bem-vindo, ${user.nome}!`);
-    window.location.href = "dashboard.html";
+    toast.success(`Bem-vindo, ${user.nome}!`, "Login realizado");
+    setTimeout(() => {
+      window.location.href = "dashboard.html";
+    }, 500);
   }, 800);
 });
 
@@ -193,7 +196,10 @@ cadastroForm.addEventListener("submit", (e) => {
   const emailExists = testUsers.some((u) => u.email === email);
 
   if (emailExists) {
-    alert("Este e-mail já está cadastrado! Use o login ou outro e-mail.");
+    toast.warning(
+      "Este e-mail já está cadastrado! Use o login ou outro e-mail.",
+      "E-mail duplicado"
+    );
     return;
   }
 
@@ -214,8 +220,10 @@ cadastroForm.addEventListener("submit", (e) => {
 
   // Simulate API call
   setTimeout(() => {
-    alert(`Conta criada com sucesso, ${nome}!`);
-    window.location.href = "dashboard.html";
+    toast.success(`Conta criada com sucesso, ${nome}!`, "Cadastro completo");
+    setTimeout(() => {
+      window.location.href = "dashboard.html";
+    }, 500);
   }, 800);
 });
 
@@ -225,9 +233,12 @@ forgotPasswordLink.addEventListener("click", (e) => {
   e.preventDefault();
   const email = prompt("Digite seu e-mail para recuperar a senha:");
   if (email && validateEmail(email)) {
-    alert(`Um link de recuperação foi enviado para ${email}`);
+    toast.success(
+      `Um link de recuperação foi enviado para ${email}`,
+      "E-mail enviado"
+    );
   } else if (email) {
-    alert("E-mail inválido. Tente novamente.");
+    toast.error("E-mail inválido. Tente novamente.", "Erro de validação");
   }
 });
 
@@ -244,8 +255,9 @@ socialButtons.forEach((btnId) => {
   if (btn) {
     btn.addEventListener("click", () => {
       const provider = btnId.includes("google") ? "Google" : "Apple";
-      alert(
-        `Login com ${provider} será implementado em breve. Aguarde as próximas atualizações!`
+      toast.info(
+        `Login com ${provider} será implementado em breve. Aguarde as próximas atualizações!`,
+        "Em desenvolvimento"
       );
       // TODO: Implement OAuth flow
     });

@@ -54,7 +54,10 @@ navItems.forEach((item) => {
       const confirmLogout = confirm("Deseja realmente sair?");
       if (confirmLogout) {
         localStorage.removeItem("currentUser");
-        window.location.href = "login.html";
+        toast.success("Até logo!", "Logout");
+        setTimeout(() => {
+          window.location.href = "login.html";
+        }, 800);
       }
       return;
     }
@@ -103,32 +106,7 @@ function completeExercise(exerciseElement) {
   exerciseElement.style.opacity = "0.5";
   exerciseElement.style.pointerEvents = "none";
 
-  // Show success message
-  const successMsg = document.createElement("div");
-  successMsg.style.cssText = `
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: #10b981;
-    color: white;
-    padding: 1rem 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    z-index: 9999;
-    animation: slideIn 0.3s ease;
-  `;
-  successMsg.innerHTML = `
-    <div style="display: flex; align-items: center; gap: 0.5rem;">
-      <i data-lucide="check-circle"></i>
-      <span>Exercício completado! 🎉</span>
-    </div>
-  `;
-  document.body.appendChild(successMsg);
-  lucide.createIcons();
-
-  setTimeout(() => {
-    successMsg.remove();
-  }, 3000);
+  toast.success("Exercício completado! 🎉", "Parabéns!");
 }
 
 // Add click handlers to exercise play buttons
@@ -139,8 +117,9 @@ document.querySelectorAll(".exercise-item .btn-icon").forEach((btn) => {
     const exerciseName = exerciseItem.querySelector("h3").textContent;
 
     // In real app, this would open video player
-    alert(
-      `Iniciando: ${exerciseName}\n\nEm breve você será redirecionado para o player de vídeo.`
+    toast.info(
+      `Em breve você será redirecionado para o player de vídeo.`,
+      `Iniciando: ${exerciseName}`
     );
 
     // Simulate completion after "watching"
@@ -152,8 +131,9 @@ document.querySelectorAll(".exercise-item .btn-icon").forEach((btn) => {
 document.querySelectorAll(".article-item").forEach((article) => {
   article.addEventListener("click", () => {
     const title = article.querySelector("h3").textContent;
-    alert(
-      `Abrindo artigo: ${title}\n\nEm breve você será redirecionado para a página do artigo.`
+    toast.info(
+      "Em breve você será redirecionado para a página do artigo.",
+      `Abrindo: ${title}`
     );
   });
 });
@@ -170,9 +150,13 @@ document.querySelectorAll(".post-action").forEach((action) => {
       const currentCount = parseInt(count.textContent);
       count.textContent = currentCount + 1;
       action.style.color = "#ef4444";
+      toast.success("Post curtido!", "", 2000);
     } else {
       // Open comments
-      alert("Em breve: Sistema de comentários estará disponível!");
+      toast.info(
+        "Sistema de comentários estará disponível em breve!",
+        "Em desenvolvimento"
+      );
     }
   });
 });
@@ -182,11 +166,15 @@ document.querySelectorAll(".quick-actions .btn").forEach((btn) => {
   btn.addEventListener("click", () => {
     const text = btn.textContent.trim();
     if (text.includes("Treino")) {
-      alert("Redirecionando para página de exercícios...");
-      window.location.hash = "#exercicios";
+      toast.info("Redirecionando para página de exercícios...", "Aguarde");
+      setTimeout(() => {
+        window.location.hash = "#exercicios";
+      }, 800);
     } else if (text.includes("Agenda")) {
-      alert("Redirecionando para sua agenda...");
-      window.location.hash = "#agenda";
+      toast.info("Redirecionando para sua agenda...", "Aguarde");
+      setTimeout(() => {
+        window.location.hash = "#agenda";
+      }, 800);
     }
   });
 });
@@ -200,16 +188,20 @@ userBtn?.addEventListener("click", () => {
   if (choice) {
     // Logout
     localStorage.removeItem("currentUser");
-    alert("Logout realizado com sucesso!");
-    window.location.href = "login.html";
+    toast.success("Até breve!", "Logout realizado");
+    setTimeout(() => {
+      window.location.href = "login.html";
+    }, 800);
   }
 });
 
 // Notification button
 const notificationBtn = document.getElementById("notificationBtn");
 notificationBtn?.addEventListener("click", () => {
-  alert(
-    "Notificações:\n\n✓ Nova conquista desbloqueada!\n✓ Lembrete: Exercício às 14:00\n✓ Maria Costa curtiu seu post\n\n(Em desenvolvimento)"
+  toast.info(
+    "✓ Nova conquista desbloqueada!<br>✓ Lembrete: Exercício às 14:00<br>✓ Maria Costa curtiu seu post",
+    "Notificações (3)",
+    4000
   );
 });
 
