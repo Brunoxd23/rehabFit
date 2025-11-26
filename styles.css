@@ -175,7 +175,10 @@ html {
 
 .hero-stats {
   display: flex;
-  gap: 3rem;
+  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-top: 1.25rem;
 }
 
 .stat {
@@ -189,8 +192,37 @@ html {
 }
 
 .stat-label {
-  font-size: 0.9rem;
-  opacity: 0.9;
+  font-size: 0.95rem;
+  opacity: 0.95;
+  color: rgba(255, 255, 255, 0.95);
+  display: block;
+}
+
+/* Ensure stats remain visible above image blocks */
+.hero-text {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-image {
+  position: relative;
+  z-index: 1;
+}
+
+/* Extra spacing on small screens to avoid overlap */
+@media (max-width: 968px) {
+  .hero-stats {
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .stat-number {
+    line-height: 1.2;
+  }
+
+  .stat-label {
+    font-size: 0.9rem;
+  }
 }
 
 .hero-image-wrapper {
@@ -801,5 +833,43 @@ html {
   .beneficios-grid,
   .depoimentos-grid {
     grid-template-columns: 1fr;
+  }
+
+  /* Mobile badge layout refinements */
+  .hero-image-wrapper {
+    min-height: 280px;
+    max-height: 280px;
+  }
+
+  .hero-img {
+    height: 280px;
+  }
+
+  .hero-badge {
+    max-width: 85%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0.55rem 0.9rem;
+    font-size: 0.8rem;
+  }
+
+  .hero-badge:nth-child(2) {
+    top: 10px;
+    right: 10px;
+  }
+
+  /* Bottom badges: place at corners to avoid stacking */
+  .hero-badge.badge-2 {
+    bottom: 12px;
+    right: 12px;
+    left: auto;
+    transform: none;
+  }
+
+  .hero-badge.badge-3 {
+    bottom: 60px; /* a bit above badge-2 to avoid overlap */
+    left: 12px;
+    right: auto;
   }
 }
