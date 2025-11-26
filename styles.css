@@ -734,6 +734,40 @@ html {
 
   .hero-stats {
     gap: 1.5rem;
+
+    .hero-image-wrapper {
+      min-height: 300px;
+      max-height: 300px;
+    }
+
+    .hero-img {
+      height: 300px;
+    }
+
+    .hero-badge {
+      font-size: 0.75rem;
+      padding: 0.5rem 0.85rem;
+    }
+
+    .badge-icon {
+      width: 16px;
+      height: 16px;
+    }
+
+    .hero-badge:nth-child(2) {
+      top: 10px;
+      right: 10px;
+    }
+
+    .hero-badge.badge-2 {
+      bottom: 10px;
+      right: 10px;
+    }
+
+    .hero-badge.badge-3 {
+      bottom: 60px;
+      left: 10px;
+    }
   }
 
   .contato-content {
