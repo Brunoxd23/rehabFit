@@ -1,9 +1,54 @@
-// Mobile Menu Toggle
+// Mobile Menu Toggle with overlay & accessibility
 const navToggle = document.getElementById("navToggle");
 const navMenu = document.getElementById("navMenu");
+let navOverlay = document.querySelector(".nav-overlay");
+if (!navOverlay) {
+  navOverlay = document.createElement("div");
+  navOverlay.className = "nav-overlay";
+  document.body.appendChild(navOverlay);
+}
 
-navToggle.addEventListener("click", () => {
-  navMenu.classList.toggle("active");
+function closeNavMenu() {
+  navMenu.classList.remove("active");
+  navToggle.classList.remove("active");
+  navOverlay.classList.remove("active");
+  navToggle.setAttribute("aria-expanded", "false");
+}
+
+function openNavMenu() {
+  navMenu.classList.add("active");
+  navToggle.classList.add("active");
+  navOverlay.classList.add("active");
+  navToggle.setAttribute("aria-expanded", "true");
+}
+
+navToggle.setAttribute("aria-controls", "navMenu");
+navToggle.setAttribute("aria-expanded", "false");
+
+navToggle.addEventListener("click", (e) => {
+  e.stopPropagation();
+  if (navMenu.classList.contains("active")) {
+    closeNavMenu();
+  } else {
+    openNavMenu();
+  }
+});
+
+// Click outside (overlay) closes
+navOverlay.addEventListener("click", () => closeNavMenu());
+
+// Esc key closes
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && navMenu.classList.contains("active")) {
+    closeNavMenu();
+  }
+});
+
+// Any click outside nav when open closes
+document.addEventListener("click", (e) => {
+  if (!navMenu.classList.contains("active")) return;
+  const withinMenu = navMenu.contains(e.target) || navToggle.contains(e.target);
+  if (!withinMenu) closeNavMenu();
 });
 
 // Close mobile menu when clicking on a link

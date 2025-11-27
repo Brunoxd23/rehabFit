@@ -117,6 +117,35 @@ html {
   transition: var(--transition);
 }
 
+/* Hamburger to X animation */
+.nav-toggle.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.nav-toggle.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Overlay for mobile menu */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 900;
+}
+.nav-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 /* Hero Section */
 .hero {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -945,6 +974,11 @@ html {
 
   .nav-menu.active {
     left: 0;
+  }
+
+  /* Ensure nav menu sits above overlay */
+  .nav-menu.active {
+    z-index: 950;
   }
 
   .nav-toggle {
