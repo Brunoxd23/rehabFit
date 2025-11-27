@@ -86,32 +86,48 @@ window.addEventListener("scroll", () => {
   lastScroll = currentScroll;
 });
 
-// Add animation on scroll
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: "0px 0px -50px 0px",
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = "1";
-      entry.target.style.transform = "translateY(0)";
-    }
-  });
-}, observerOptions);
-
-// Observe all cards and sections for animation
+// Scroll reveal animations (left / right / up)
 document.addEventListener("DOMContentLoaded", () => {
-  const animatedElements = document.querySelectorAll(
-    ".sobre-card, .beneficio-item, .step, .depoimento-card"
+  const revealEls = document.querySelectorAll(
+    ".reveal-up, .reveal-left, .reveal-right"
   );
 
-  animatedElements.forEach((el) => {
-    el.style.opacity = "0";
-    el.style.transform = "translateY(30px)";
-    el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-    observer.observe(el);
+  // Group-based stagger for better readability
+  const groups = [
+    document.querySelectorAll(".sobre-grid .sobre-card"),
+    document.querySelectorAll(".beneficios-grid .beneficio-item"),
+    document.querySelectorAll(".depoimentos-grid .depoimento-card"),
+    document.querySelectorAll(".timeline .timeline-card"),
+    document.querySelectorAll(".contato-content > *"),
+  ];
+
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -5% 0px" }
+  );
+
+  // Apply custom stagger per group
+  groups.forEach((nodeList) => {
+    nodeList.forEach((el, idx) => {
+      // Longer stagger for clarity on reading
+      const baseDelay = 140; // ms
+      el.style.transitionDelay = `${idx * baseDelay}ms`;
+      revealObserver.observe(el);
+    });
+  });
+
+  // Fallback for any element with reveal class not covered above
+  revealEls.forEach((el) => {
+    if (!el.style.transitionDelay) {
+      el.style.transitionDelay = "0ms";
+    }
+    revealObserver.observe(el);
   });
 });
 

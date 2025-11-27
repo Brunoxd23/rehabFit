@@ -1091,4 +1091,125 @@ html {
     left: 12px;
     right: auto;
   }
+
+  /* Compact mobile footer */
+  .footer {
+    padding: 1.75rem 16px 1rem;
+  }
+  .footer-content {
+    gap: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .footer-links {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem 1rem;
+  }
+  .footer-col h4 {
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+  }
+  .footer-col ul {
+    margin: 0;
+  }
+  .footer-col a {
+    font-size: 0.75rem;
+    margin-bottom: 0.35rem;
+    padding: 2px 0;
+  }
+  .footer-brand p {
+    font-size: 0.75rem;
+  }
+  .logo-text {
+    font-size: 1.1rem;
+  }
+  .logo-icon {
+    width: 26px;
+    height: 26px;
+  }
+  .footer-bottom {
+    font-size: 0.65rem;
+    padding-top: 0.75rem;
+  }
+  .footer-bottom p {
+    margin: 0;
+  }
+}
+
+/* Scroll reveal animations */
+.reveal-up,
+.reveal-left,
+.reveal-right {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition-property: transform, opacity;
+  transition-duration: 1.05s;
+  transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.reveal-up {
+  transform: translateY(55px);
+}
+
+.reveal-left {
+  transform: translateX(-45px);
+}
+
+.reveal-right {
+  transform: translateX(45px);
+}
+
+.reveal-up.in-view,
+.reveal-left.in-view,
+.reveal-right.in-view {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Optional stagger for groups */
+.sobre-card.reveal-up:nth-child(1),
+.beneficio-item.reveal-up:nth-child(1),
+.depoimento-card.reveal-up:nth-child(1) {
+  transition-delay: 0ms;
+}
+.sobre-card.reveal-up:nth-child(2),
+.beneficio-item.reveal-up:nth-child(2),
+.depoimento-card.reveal-up:nth-child(2) {
+  transition-delay: 120ms;
+}
+.sobre-card.reveal-up:nth-child(3),
+.beneficio-item.reveal-up:nth-child(3),
+.depoimento-card.reveal-up:nth-child(3) {
+  transition-delay: 240ms;
+}
+.sobre-card.reveal-up:nth-child(4),
+.beneficio-item.reveal-up:nth-child(4) {
+  transition-delay: 360ms;
+}
+
+/* Slightly slower for timeline cards for readability */
+.timeline-card.reveal-left,
+.timeline-card.reveal-right {
+  transition-duration: 1.2s;
+}
+
+/* Ensure timeline nodes stay above animated cards */
+.timeline-node {
+  z-index: 5;
+}
+
+/* Responsive: reduce initial offset so cards don't appear too far */
+@media (max-width: 640px) {
+  .reveal-up {
+    transform: translateY(35px);
+  }
+  .reveal-left {
+    transform: translateX(-30px);
+  }
+  .reveal-right {
+    transform: translateX(30px);
+  }
+  .timeline-card.reveal-left,
+  .timeline-card.reveal-right {
+    transition-duration: 1s;
+  }
 }
