@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="RehabFit - Programa de preparação pré-operatória com exercícios e educação para reduzir complicações e acelerar a recuperação."
+    />
+    <title>RehabFit - Pré-operatório</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <nav class="nav container">
+        <div class="logo" onclick="location.href='index.html'">
+          <i data-lucide="heart-pulse" class="logo-icon"></i>
+          <span class="logo-text">RehabFit</span>
+        </div>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#sobre" class="nav-link">Por que Pré-operatório?</a></li>
+          <li><a href="#beneficios" class="nav-link">Benefícios</a></li>
+          <li><a href="#como-funciona" class="nav-link">Como Funciona</a></li>
+          <li>
+            <a href="#contato" class="nav-link btn-primary">Começar Agora</a>
+          </li>
+        </ul>
+        <button class="nav-toggle" id="navToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="hero-text">
+          <h1 class="hero-title">
+            Prepare-se para a <span class="highlight">cirurgia</span>
+          </h1>
+          <p class="hero-description">
+            Fortalecimento, respiração, mobilidade e educação para reduzir
+            complicações e acelerar sua recuperação pós-operatória.
+          </p>
+          <div class="hero-cta">
+            <a href="#contato" class="btn btn-primary btn-lg"
+              >Iniciar preparação</a
+            >
+            <a href="#sobre" class="btn btn-secondary btn-lg">Saiba Mais</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="hero-image-wrapper">
+            <img
+              src="https://www.prehabrx.ca/lovable-uploads/pre-surgical-waiting-room.jpg"
+              alt="Preparação para cirurgia"
+              class="hero-img"
+            />
+            <div class="hero-badge">
+              <i data-lucide="check-circle" class="badge-icon"></i
+              ><span>Reduz riscos</span>
+            </div>
+            <div class="hero-badge badge-2">
+              <i data-lucide="clock" class="badge-icon"></i
+              ><span>Recupera mais rápido</span>
+            </div>
+            <div class="hero-badge badge-3">
+              <i data-lucide="smile" class="badge-icon"></i
+              ><span>Mais confiança</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Por que Pré-operatório Section -->
+    <section id="sobre" class="section sobre">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Por que se preparar antes da cirurgia?</h2>
+          <p class="section-subtitle">
+            Intervenções simples geram ganhos significativos no pós-operatório
+          </p>
+        </div>
+        <div class="sobre-grid">
+          <div class="sobre-card reveal-up">
+            <div class="card-icon"><i data-lucide="dumbbell"></i></div>
+            <h3>Fortalecimento</h3>
+            <p>
+              Exercícios de força para melhorar capacidade funcional e
+              tolerância ao procedimento.
+            </p>
+          </div>
+          <div class="sobre-card reveal-up">
+            <div class="card-icon"><i data-lucide="wind"></i></div>
+            <h3>Respiração</h3>
+            <p>
+              Treinos respiratórios para reduzir complicações pulmonares e
+              melhorar oxigenação.
+            </p>
+          </div>
+          <div class="sobre-card reveal-up">
+            <div class="card-icon"><i data-lucide="move"></i></div>
+            <h3>Mobilidade</h3>
+            <p>
+              Amplitude, alongamentos e marcha para facilitar o retorno às
+              atividades.
+            </p>
+          </div>
+          <div class="sobre-card reveal-up">
+            <div class="card-icon"><i data-lucide="book-open"></i></div>
+            <h3>Educação</h3>
+            <p>
+              Orientações práticas sobre o dia da cirurgia e cuidados iniciais.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefícios Section -->
+    <section id="beneficios" class="section beneficios">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Benefícios Comprovados</h2>
+          <p class="section-subtitle">Boa preparação = melhor desfecho</p>
+        </div>
+        <div class="beneficios-grid">
+          <div class="beneficio-item reveal-right">
+            <div class="beneficio-icon"><i data-lucide="shield-check"></i></div>
+            <h3>Menos complicações</h3>
+            <p>Redução de eventos pulmonares e musculoesqueléticos.</p>
+          </div>
+          <div class="beneficio-item reveal-right">
+            <div class="beneficio-icon"><i data-lucide="sparkles"></i></div>
+            <h3>Recuperação acelerada</h3>
+            <p>Retorno mais rápido às atividades e autonomia.</p>
+          </div>
+          <div class="beneficio-item reveal-right">
+            <div class="beneficio-icon"><i data-lucide="line-chart"></i></div>
+            <h3>Melhor capacidade funcional</h3>
+            <p>Mais força, resistência e condicionamento para o pós.</p>
+          </div>
+          <div class="beneficio-item reveal-left">
+            <div class="beneficio-icon"><i data-lucide="smile"></i></div>
+            <h3>Menos ansiedade</h3>
+            <p>Maior segurança e clareza sobre o processo.</p>
+          </div>
+          <div class="beneficio-item reveal-left">
+            <div class="beneficio-icon"><i data-lucide="heart"></i></div>
+            <h3>Saúde geral</h3>
+            <p>Melhora de marcadores cardiovasculares e metabólicos.</p>
+          </div>
+          <div class="beneficio-item reveal-left">
+            <div class="beneficio-icon"><i data-lucide="moon"></i></div>
+            <h3>Sono e bem-estar</h3>
+            <p>Rotina mais estável para enfrentar o procedimento.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Como Funciona Section -->
+    <section id="como-funciona" class="section como-funciona">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Como funciona o programa pré-operatório</h2>
+          <p class="section-subtitle">
+            Processo claro e objetivo, focado em segurança e resultados
+          </p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-line"></div>
+
+          <div class="timeline-item left">
+            <div class="timeline-node">1</div>
+            <div class="timeline-card reveal-left">
+              <div class="timeline-card-media">
+                <img
+                  src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80"
+                  alt="Avaliação pré-operatória"
+                />
+              </div>
+              <div class="timeline-card-body">
+                <div class="timeline-icon">
+                  <i data-lucide="clipboard-list"></i>
+                </div>
+                <h3 class="timeline-step">01</h3>
+                <h4 class="timeline-title">Avaliação pré-operatória</h4>
+                <p class="timeline-text">
+                  Histórico, exame físico, testes funcionais e metas
+                  personalizadas.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item right">
+            <div class="timeline-node">2</div>
+            <div class="timeline-card reveal-right">
+              <div class="timeline-card-media">
+                <img
+                  src="https://plus.unsplash.com/premium_photo-1723492811658-23e5c20e590d?q=80&w=994&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  alt="Plano de exercícios"
+                />
+              </div>
+              <div class="timeline-card-body">
+                <div class="timeline-icon"><i data-lucide="dumbbell"></i></div>
+                <h3 class="timeline-step">02</h3>
+                <h4 class="timeline-title">Plano de exercícios</h4>
+                <p class="timeline-text">
+                  Força, respiração e mobilidade com progressão segura.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item left">
+            <div class="timeline-node">3</div>
+            <div class="timeline-card reveal-left">
+              <div class="timeline-card-media">
+                <img
+                  src="https://images.unsplash.com/photo-1758875569399-99a7d80ace43?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  alt="Sessões guiadas"
+                />
+              </div>
+              <div class="timeline-card-body">
+                <div class="timeline-icon"><i data-lucide="video"></i></div>
+                <h3 class="timeline-step">03</h3>
+                <h4 class="timeline-title">Sessões guiadas</h4>
+                <p class="timeline-text">
+                  Acompanhamento remoto e ajustes conforme evolução.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item right">
+            <div class="timeline-node">4</div>
+            <div class="timeline-card reveal-right">
+              <div class="timeline-card-media">
+                <img
+                  src="https://www.espacofisioembu.com.br/imagens/categorias/fisioterapia-pos-operatorio-09.webp"
+                  alt="Pós-operatório inicial"
+                />
+              </div>
+              <div class="timeline-card-body">
+                <div class="timeline-icon">
+                  <i data-lucide="stethoscope"></i>
+                </div>
+                <h3 class="timeline-step">04</h3>
+                <h4 class="timeline-title">Pós-operatório inicial</h4>
+                <p class="timeline-text">
+                  Orientações para os primeiros dias e retomada gradual.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-accordion" id="timelineAccordion">
+          <div class="acc-item open">
+            <button class="acc-header" type="button" aria-expanded="true">
+              <span class="acc-number">1</span>
+              <span class="acc-title">Avaliação pré-operatória</span>
+              <i data-lucide="chevron-down" class="acc-icon"></i>
+            </button>
+            <div class="acc-panel">
+              <div class="acc-media">
+                <img
+                  src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80"
+                  alt="Avaliação"
+                  loading="lazy"
+                />
+              </div>
+              <p class="acc-text">
+                Histórico, exame físico, testes funcionais e metas
+                personalizadas.
+              </p>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-header" type="button" aria-expanded="false">
+              <span class="acc-number">2</span>
+              <span class="acc-title">Plano de exercícios</span>
+              <i data-lucide="chevron-down" class="acc-icon"></i>
+            </button>
+            <div class="acc-panel">
+              <div class="acc-media">
+                <img
+                  src="https://images.unsplash.com/photo-1554284126-aa88f22d8b54?auto=format&fit=crop&w=900&q=80"
+                  alt="Plano"
+                  loading="lazy"
+                />
+              </div>
+              <p class="acc-text">
+                Força, respiração e mobilidade com progressão segura.
+              </p>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-header" type="button" aria-expanded="false">
+              <span class="acc-number">3</span>
+              <span class="acc-title">Sessões guiadas</span>
+              <i data-lucide="chevron-down" class="acc-icon"></i>
+            </button>
+            <div class="acc-panel">
+              <div class="acc-media">
+                <img
+                  src="https://images.unsplash.com/photo-1551292831-023188e78222?auto=format&fit=crop&w=900&q=80"
+                  alt="Sessões"
+                  loading="lazy"
+                />
+              </div>
+              <p class="acc-text">
+                Acompanhamento remoto e ajustes conforme evolução.
+              </p>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-header" type="button" aria-expanded="false">
+              <span class="acc-number">4</span>
+              <span class="acc-title">Pós-operatório inicial</span>
+              <i data-lucide="chevron-down" class="acc-icon"></i>
+            </button>
+            <div class="acc-panel">
+              <div class="acc-media">
+                <img
+                  src="https://images.unsplash.com/photo-1623039488742-69deda1908fc?auto=format&fit=crop&w=900&q=80"
+                  alt="Pós"
+                  loading="lazy"
+                />
+              </div>
+              <p class="acc-text">
+                Orientações para os primeiros dias e retomada gradual.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-cta">
+          <div class="timeline-cta-card">
+            <div class="timeline-cta-icon">
+              <i data-lucide="chevron-right"></i>
+            </div>
+            <h3>Pronto para começar a preparação?</h3>
+            <p>
+              Agende uma avaliação e receba seu plano personalizado de
+              preparação pré-operatória com segurança.
+            </p>
+            <a href="#contato" class="btn btn-primary">Comece agora</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contato/CTA Section -->
+    <section id="contato" class="section contato">
+      <div class="container">
+        <div class="contato-content">
+          <div class="contato-info reveal-left">
+            <h2>Pronto para Começar?</h2>
+            <p>Vamos construir seu plano pré-operatório com segurança.</p>
+            <ul class="contato-features">
+              <li>✅ Sem compromisso inicial</li>
+              <li>✅ Primeira avaliação gratuita</li>
+              <li>✅ Suporte especializado</li>
+              <li>✅ Resultados comprovados</li>
+            </ul>
+          </div>
+          <div class="contato-form-wrapper reveal-right">
+            <form class="contato-form" id="contatoForm">
+              <h3>Solicite uma Avaliação</h3>
+              <div class="form-group">
+                <input
+                  type="text"
+                  id="nome"
+                  name="nome"
+                  placeholder="Seu nome completo"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Seu melhor e-mail"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="tel"
+                  id="telefone"
+                  name="telefone"
+                  placeholder="Seu telefone"
+                />
+              </div>
+              <div class="form-group">
+                <textarea
+                  id="mensagem"
+                  name="mensagem"
+                  rows="4"
+                  placeholder="Conte-nos um pouco sobre sua situação (opcional)"
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg btn-block">
+                Quero Começar
+              </button>
+              <p class="form-privacy">
+                Seus dados estão seguros e protegidos conosco
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <div class="logo">
+              <i data-lucide="heart-pulse" class="logo-icon"></i>
+              <span class="logo-text">RehabFit</span>
+            </div>
+            <p>Preparação pré-operatória personalizada</p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-col">
+              <h4>Programa</h4>
+              <ul>
+                <li><a href="#sobre">Por que Pré?</a></li>
+                <li><a href="#beneficios">Benefícios</a></li>
+                <li><a href="#como-funciona">Como Funciona</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>Suporte</h4>
+              <ul>
+                <li><a href="#contato">Contato</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Ajuda</a></li>
+              </ul>
+            </div>
+            <div class="footer-col">
+              <h4>Legal</h4>
+              <ul>
+                <li><a href="#">Privacidade</a></li>
+                <li><a href="#">Termos</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 RehabFit. Todos os direitos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      lucide.createIcons();
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>

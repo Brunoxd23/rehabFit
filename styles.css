@@ -1108,21 +1108,21 @@ html {
 
   .hero-badge:nth-child(2) {
     top: 10px;
-    left: 10px;
+    left: 165px;
     right: auto;
   }
 
   /* Bottom badges: place at corners to avoid stacking */
   .hero-badge.badge-2 {
-    bottom: 12px;
-    left: 12px;
+    bottom: 4px;
+    left: 125px;
     right: auto;
     transform: none;
   }
 
   .hero-badge.badge-3 {
-    bottom: 60px; /* a bit above badge-2 to avoid overlap */
-    left: 12px;
+    bottom: 58px;
+    left: 166px;
     right: auto;
   }
 

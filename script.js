@@ -73,47 +73,24 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   });
 });
 
-// Form submission
+// Form submission (guard when form is present)
 const contatoForm = document.getElementById("contatoForm");
+if (contatoForm) {
+  contatoForm.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-contatoForm.addEventListener("submit", (e) => {
-  e.preventDefault();
+    const formData = {
+      nome: document.getElementById("nome")?.value || "",
+      email: document.getElementById("email")?.value || "",
+      telefone: document.getElementById("telefone")?.value || "",
+      mensagem: document.getElementById("mensagem")?.value || "",
+    };
 
-  // Get form data
-  const formData = {
-    nome: document.getElementById("nome").value,
-    email: document.getElementById("email").value,
-    telefone: document.getElementById("telefone").value,
-    mensagem: document.getElementById("mensagem").value,
-  };
-
-  // Simulate form submission
-  console.log("Form submitted:", formData);
-
-  // Show success message
-  alert("Obrigado pelo seu interesse! Entraremos em contato em breve.");
-
-  // Reset form
-  contatoForm.reset();
-
-  // In a real application, you would send this data to a server
-  // Example:
-  // fetch('/api/contact', {
-  //     method: 'POST',
-  //     headers: {
-  //         'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(formData)
-  // })
-  // .then(response => response.json())
-  // .then(data => {
-  //     alert('Mensagem enviada com sucesso!');
-  //     contatoForm.reset();
-  // })
-  // .catch(error => {
-  //     alert('Erro ao enviar mensagem. Tente novamente.');
-  // });
-});
+    console.log("Form submitted:", formData);
+    alert("Obrigado pelo seu interesse! Entraremos em contato em breve.");
+    contatoForm.reset();
+  });
+}
 
 // Add scroll effect to header
 let lastScroll = 0;
@@ -183,13 +160,15 @@ function validateEmail(email) {
 }
 
 const emailInput = document.getElementById("email");
-emailInput.addEventListener("blur", () => {
-  if (emailInput.value && !validateEmail(emailInput.value)) {
-    emailInput.style.borderColor = "#EF4444";
-  } else {
-    emailInput.style.borderColor = "";
-  }
-});
+if (emailInput) {
+  emailInput.addEventListener("blur", () => {
+    if (emailInput.value && !validateEmail(emailInput.value)) {
+      emailInput.style.borderColor = "#EF4444";
+    } else {
+      emailInput.style.borderColor = "";
+    }
+  });
+}
 
 // Accordion (mobile) behavior
 document.addEventListener("DOMContentLoaded", () => {
